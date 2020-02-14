@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.scss';
+import { CharactersOverviewComponent } from './components/characters-overview/characters-overview';
 
 const App = () => {
   return (
     <div className='App'>
-      <h1>Housing Anywhere</h1>
+      <CharactersOverviewComponent />
     </div>
   );
 };

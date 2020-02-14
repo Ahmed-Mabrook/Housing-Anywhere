@@ -1,0 +1,31 @@
+.characters-overview {
+  &-header {
+    background-color: white;
+    div {
+      width: 60%;
+      margin: auto;
+      padding: 24px 0;
+      > * {
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin-bottom: 0;
+      }
+      span {
+        background-color: black;
+        color: rgb(255, 152, 0);
+        font-size: 24px;
+        padding: 4px 8px;
+      }
+    }
+  }
+  &-body {
+    margin-top: 48px;
+  }
+  &-item {
+    height: 565px;
+    margin-bottom: 24px;
+    border-radius: 6px;
+  }
+}
