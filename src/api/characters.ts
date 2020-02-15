@@ -6,8 +6,7 @@ export const getCharacters = async (currentPage: number) => {
   let results = await axios
     .get(url)
     .then(res => res.data)
-    .catch(e => console.log('err:' + e));
-    console.log("api characters");
+    .catch(e => Error(e));
 
   return results;
 };

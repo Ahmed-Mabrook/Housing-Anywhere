@@ -4,12 +4,12 @@ export const getLocationAndOrigin = async (locationURL: string, originURL: strin
   let location = await axios
     .get(locationURL)
     .then(res => res.data)
-    .catch(e => console.log('err:' + e));
+    .catch(e => Error(e));
 
   let origin = await axios
     .get(originURL)
     .then(res => res.data)
-    .catch(e => console.log('err:' + e));
-console.log("api location");
+    .catch(e => Error(e));
+
   return { location, origin };
 };

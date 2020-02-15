@@ -18,6 +18,6 @@ export const getEpisodes = async (urls: string[]) => {
   for (let i = 0; i < results.length; i++) {
     episodesName.push(results[i].name);
   }
-console.log("api episodes")
+
   return episodesName;
 };
