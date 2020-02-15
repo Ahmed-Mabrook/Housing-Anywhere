@@ -44,11 +44,12 @@
   }
   &-tabs {
     height: 30px;
+    margin-bottom: 8px;
   }
   &-body {
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(50% - 38px);
+    height: calc(50% - 46px);
     font-size: 14px;
     color: rgb(158, 158, 158);
     margin-bottom: 8px;
