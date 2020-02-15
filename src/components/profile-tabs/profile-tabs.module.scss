@@ -1,0 +1,22 @@
+.profile-tabs {
+  ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 100%;
+    margin: 0 auto;
+    li {
+      cursor: pointer;
+      border-bottom: 1px solid rgb(255, 152, 0);
+      width: 32%;
+      font-size: 14px;
+      padding: 4px 0;
+    }
+  }
+  &-active {
+    background-color: rgb(255, 152, 0);
+    color: white;
+    border-bottom: 1px solid white;
+  }
+}

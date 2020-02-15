@@ -16,26 +16,23 @@ export const CharactersOverviewComponent = () => {
       data && setCharacters(data.results);
     };
     loadCharacters();
+    window.scroll({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
   return (
     <div className={style['characters-overview']}>
-      <div className={style['characters-overview-header']}>
-        <div>
-          <h2>Housing Anywhere Assessment</h2>
-          <span>all Rick and Morty character's profile!</span>
+      <div className='uk-container'>
+        <div className='uk-grid uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l'>
+          {characters.length > 0 &&
+            characters.map((character: ICharacter, key: number) => (
+              <div key={key} className={style['characters-overview-item']}>
+                <CharacterProfileComponent character={character} />
+              </div>
+            ))}
         </div>
-      </div>
-      <div className={style['characters-overview-body']}>
-        <div className='uk-container'>
-          <div className='uk-grid uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l'>
-            {characters.length > 0 &&
-              characters.map((character: ICharacter, key: number) => (
-                <div key={key} className={style['characters-overview-item']}>
-                  <CharacterProfileComponent character={character} />
-                </div>
-              ))}
-          </div>
+        <div className={style['characters-overview-pagination']}>
+          <span onClick={() => (currentPage > 1 ? setCurrentPage(currentPage - 1) : '')}>Previous Page</span>
+          <span onClick={() => setCurrentPage(currentPage + 1)}>Next Page</span>
         </div>
       </div>
     </div>

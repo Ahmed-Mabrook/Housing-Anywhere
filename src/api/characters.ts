@@ -7,7 +7,7 @@ export const getCharacters = async (currentPage: number) => {
     .get(url)
     .then(res => res.data)
     .catch(e => console.log('err:' + e));
-  console.log(results);
+    console.log("api characters");
 
   return results;
 };

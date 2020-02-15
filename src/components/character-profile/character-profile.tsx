@@ -2,74 +2,56 @@ import React from 'react';
 import { ICharacter } from '../../types/character';
 import style from './character-profile.module.scss';
 import { LocationAndOriginComponent } from '../location-and-origin/location-and-origin';
+import { ProfileTabsComponent } from '../profile-tabs/profile-tabs';
+import { CharacterEpisodesComponent } from '../character-episodes/character-episodes';
 
 interface ICharacterProfileComponentProps {
   character: ICharacter;
 }
 
 export const CharacterProfileComponent = ({ character }: ICharacterProfileComponentProps) => {
-  const [currentTab, setCurrentTab] = React.useState<number>(1);
-
+  const [currentTab, setCurrentTab] = React.useState<number>(0);
+  const tabs: string[] = ['Information', 'Location', 'Episodes'];
   return (
     <div className={style['character-profile']}>
       <div className={style['character-profile-image']}>
         <img src={character.image} alt='not found' />
-        <div className={style['character-profile-title']}>
-          <h2 className={style['character-profile-name']}>{character.name}</h2>
-          <div className={style['character-profile-created']}>
-            <span>id: {character.id}</span> -
-            <span> created in: {new Date(Date.parse(character.created)).toLocaleDateString()}</span>
+        <div className={style['character-profile-image-overlay']}>
+          <div className={style['character-profile-title']}>
+            <h2>{character.name}</h2>
+            <div>
+              <span> created in: {new Date(Date.parse(character.created)).toLocaleDateString()}</span>
+            </div>
           </div>
         </div>
       </div>
-
+      <div className={style['character-profile-tabs']}>
+        <ProfileTabsComponent tabs={tabs} onTabSelected={setCurrentTab} />
+      </div>
       <div className={style['character-profile-body']}>
-        <ul>
-          <li style={currentTab === 1 ? { backgroundColor: 'orange' } : {}} onClick={() => setCurrentTab(1)}>
-            Information
-          </li>
-          <li style={currentTab === 2 ? { backgroundColor: 'orange' } : {}} onClick={() => setCurrentTab(2)}>
-            Location
-          </li>
-          <li style={currentTab === 3 ? { backgroundColor: 'orange' } : {}} onClick={() => setCurrentTab(3)}>
-            Episodes
-          </li>
-        </ul>
-        {currentTab === 1 ? (
-          <div className={style['character-profile-information']}>
+        {currentTab === 0 ? (
+          <div className='character-information'>
+            <h5>Information</h5>
             {character.status && (
               <div>
-                <span>STATUS</span> <span>{character.status}</span>
+                Status<span>{character.status}</span>
               </div>
             )}
             {character.species && (
               <div>
-                <span>SPECIES</span> <span>{character.species}</span>
+                Species<span>{character.species}</span>
               </div>
             )}
             {character.gender && (
               <div>
-                <span>GENDER</span> <span>{character.gender}</span>
+                Gender<span>{character.gender}</span>
               </div>
             )}
-            {/* {character.origin.name && (
-            <li className={style[character.origin.name !== 'unknown' ? 'character-profile-links' : '']}>
-              <span>ORIGIN</span> <span>{character.origin.name}</span>
-            </li>
-          )}
-          {character.location.name && (
-            <li
-              className={style[character.location.name !== 'unknown' ? 'character-profile-links' : '']}
-              onMouseEnter={() => alert('yo')}
-            >
-              <span>LAST LOCATION</span> <span>{character.location.name}</span>
-            </li>
-          )} */}
           </div>
+        ) : currentTab === 1 ? (
+          <LocationAndOriginComponent locationURL={character.location.url} originURL={character.origin.url} />
         ) : (
-          currentTab === 2 && (
-            <LocationAndOriginComponent locationURL={character.location.url} originURL={character.origin.url} />
-          )
+          currentTab === 2 && <CharacterEpisodesComponent episodes={character.episode} />
         )}
       </div>
     </div>

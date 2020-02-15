@@ -10,6 +10,6 @@ export const getLocationAndOrigin = async (locationURL: string, originURL: strin
     .get(originURL)
     .then(res => res.data)
     .catch(e => console.log('err:' + e));
-
+console.log("api location");
   return { location, origin };
 };

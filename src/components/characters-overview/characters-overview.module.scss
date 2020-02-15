@@ -24,8 +24,35 @@
     margin-top: 48px;
   }
   &-item {
-    height: 400px;
+    height: 425px;
     margin-bottom: 24px;
-    border-radius: 6px;
+  }
+  &-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    span {
+      margin-bottom: 24px;
+      border-radius: 8px;
+      width: 150px;
+      height: 45px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      background-color: transparent;
+      border: 2px solid rgb(255, 152, 0);
+      @media (max-width: 600px) {
+        font-size: 16px;
+        width: 125px;
+        height: 40px;
+      }
+      &:hover {
+        background-color: rgb(255, 152, 0);
+        border: 2px solid transparent;
+      }
+    }
   }
 }
