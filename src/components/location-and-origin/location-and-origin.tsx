@@ -35,11 +35,9 @@ export const LocationAndOriginComponent = (props: ILocationAndOriginComponentPro
         <div>
           Dimension<span>{location.dimension}</span>
         </div>
-        {location.type && (
-          <div>
-            Type<span>{location.type}</span>
-          </div>
-        )}
+        <div>
+          Type<span>{location.type}</span>
+        </div>
         <div>
           Number of Residents<span>{location.residents && location.residents.length}</span>
         </div>
@@ -52,11 +50,9 @@ export const LocationAndOriginComponent = (props: ILocationAndOriginComponentPro
         <div>
           Dimension<span>{origin.dimension}</span>
         </div>
-        {location.type && (
-          <div>
-            Type<span>{location.type}</span>
-          </div>
-        )}
+        <div>
+          Type<span>{location.type}</span>
+        </div>
         <div>
           Number of Residents<span>{origin.residents && origin.residents.length}</span>
         </div>
