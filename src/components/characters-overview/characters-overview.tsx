@@ -22,20 +22,21 @@ export const CharactersOverviewComponent = () => {
 
   return (
     <div className={style['characters-overview']}>
-      <div className='uk-container'>
-        <div className='uk-grid uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l'>
-          {characters.length > 0 &&
-            characters.map((character: ICharacter, key: number) => (
+      {characters.length > 0 && (
+        <div className='uk-container'>
+          <div className='uk-grid uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l'>
+            {characters.map((character: ICharacter, key: number) => (
               <div key={key} className={style['characters-overview-item']}>
                 <CharacterProfileComponent character={character} />
               </div>
             ))}
+          </div>
+          <div className={style['characters-overview-pagination']}>
+            <span onClick={() => (infoPage.prev ? setCurrentPage(infoPage.prev) : '')}>Previous Page</span>
+            <span onClick={() => (infoPage.next ? setCurrentPage(infoPage.next) : '')}>Next Page</span>
+          </div>
         </div>
-        <div className={style['characters-overview-pagination']}>
-          <span onClick={() => (infoPage.prev ? setCurrentPage(infoPage.prev) : '')}>Previous Page</span>
-          <span onClick={() => (infoPage.next ? setCurrentPage(infoPage.next) : '')}>Next Page</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
