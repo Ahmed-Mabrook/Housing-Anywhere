@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './location-and-origin.module.scss';
 import { ILocation } from '../../types/location';
 import { getLocationAndOrigin } from '../../api/location';
 import { SyncLoader } from 'react-spinners';
@@ -27,7 +26,7 @@ export const LocationAndOriginComponent = (props: ILocationAndOriginComponentPro
   }, [props.locationURL, props.originURL]);
 
   return !isLoading && location && origin ? (
-    <div className={style['location-origin']}>
+    <div>
       <div className='character-information'>
         <h5>Location</h5>
         <div>
