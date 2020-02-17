@@ -13,7 +13,7 @@ export const getEpisodes = async (urls: string[]) => {
   let results: IEpisode[] = await axios
     .get(url + idList)
     .then(res => res.data)
-    .catch(e => Error(e));
+    .catch(e => console.error(e));
 
   for (let i = 0; i < results.length; i++) {
     episodesName.push(results[i].name);
