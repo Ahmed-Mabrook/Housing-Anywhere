@@ -51,4 +51,4 @@ Used the possibility of multiple search to avoid calling the API for every singl
 
 Created an original design.
 
-Find a way to restrict even more the number of requests .
+Find a way to restrict even more the number of requests/ add cashing .
