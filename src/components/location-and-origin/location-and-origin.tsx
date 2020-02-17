@@ -16,8 +16,8 @@ export const LocationAndOriginComponent = (props: ILocationAndOriginComponentPro
   React.useEffect(() => {
     const loadLocationAndOrigin = async () => {
       const data = await getLocationAndOrigin(props.locationURL, props.originURL);
-      setOrigin(data.origin);
-      setLocation(data.location);
+      props.originURL && setOrigin(data.origin);
+      props.locationURL && setLocation(data.location);
     };
     loadLocationAndOrigin();
     setTimeout(() => {
@@ -25,38 +25,42 @@ export const LocationAndOriginComponent = (props: ILocationAndOriginComponentPro
     }, 300);
   }, [props.locationURL, props.originURL]);
 
-  return !isLoading && location && origin ? (
+  return !isLoading && (location || origin) ? (
     <div>
-      <div className='character-information'>
-        <h5>Location</h5>
-        <div>
-          Name <span> {location.name}</span>
+      {location !== undefined && (
+        <div className='character-information'>
+          <h5>Location</h5>
+          <div>
+            Name <span> {location.name}</span>
+          </div>
+          <div>
+            Dimension<span>{location.dimension}</span>
+          </div>
+          <div>
+            Type<span>{location.type}</span>
+          </div>
+          <div>
+            Number of Residents<span>{location.residents && location.residents.length}</span>
+          </div>
         </div>
-        <div>
-          Dimension<span>{location.dimension}</span>
+      )}
+      {origin !== undefined && (
+        <div className='character-information'>
+          <h5>Origin</h5>
+          <div>
+            Name <span> {origin.name}</span>
+          </div>
+          <div>
+            Dimension<span>{origin.dimension}</span>
+          </div>
+          <div>
+            Type<span>{origin.type}</span>
+          </div>
+          <div>
+            Number of Residents<span>{origin.residents && origin.residents.length}</span>
+          </div>
         </div>
-        <div>
-          Type<span>{location.type}</span>
-        </div>
-        <div>
-          Number of Residents<span>{location.residents && location.residents.length}</span>
-        </div>
-      </div>
-      <div className='character-information'>
-        <h5>Origin</h5>
-        <div>
-          Name <span> {origin.name}</span>
-        </div>
-        <div>
-          Dimension<span>{origin.dimension}</span>
-        </div>
-        <div>
-          Type<span>{location.type}</span>
-        </div>
-        <div>
-          Number of Residents<span>{origin.residents && origin.residents.length}</span>
-        </div>
-      </div>
+      )}
     </div>
   ) : (
     <div className='spinner'>
